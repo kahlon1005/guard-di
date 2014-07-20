@@ -68,7 +68,7 @@
   <created_user>-</created_user>
   <created_date>2014&#x2f;02&#x2f;28 19&#x3a;15&#x3a;09.680</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2014&#x2f;07&#x2f;19 20&#x3a;41&#x3a;38.132</modified_date>
+  <modified_date>2014&#x2f;07&#x2f;20 15&#x3a;03&#x3a;27.535</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -99,8 +99,10 @@
   </connection>
   <order>
   <hop> <from>Read Person CSV</from><to>Add constants</to><enabled>Y</enabled> </hop>
-  <hop> <from>Add constants</from><to>Person Id</to><enabled>Y</enabled> </hop>
-  <hop> <from>Person Id</from><to>Populate Person</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add constants</from><to>Value Mapper</to><enabled>Y</enabled> </hop>
+  <hop> <from>Value Mapper</from><to>Person Id</to><enabled>Y</enabled> </hop>
+  <hop> <from>Person Id</from><to>Set field value</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set field value</from><to>Populate Person</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Add constants</name>
@@ -133,7 +135,19 @@
         <currency/>
         <decimal/>
         <group/>
-        <nullif>1</nullif>
+        <nullif>0</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>ROOT_PERSON_ID</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -141,8 +155,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>240</xloc>
-      <yloc>79</yloc>
+      <xloc>239</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -170,8 +184,8 @@
       <max_value>999999999</max_value>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>376</xloc>
-      <yloc>79</yloc>
+      <xloc>473</xloc>
+      <yloc>81</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -221,11 +235,55 @@
           <column_name>PERSON_ID</column_name>
           <stream_name>PERSON_ID</stream_name>
         </field>
+        <field>
+          <column_name>FIRST_NAME</column_name>
+          <stream_name>FIRST_NAME</stream_name>
+        </field>
+        <field>
+          <column_name>LAST_NAME</column_name>
+          <stream_name>LAST_NAME</stream_name>
+        </field>
+        <field>
+          <column_name>MIDDLE_NAME</column_name>
+          <stream_name>MIDDLE_NAME</stream_name>
+        </field>
+        <field>
+          <column_name>BIRTH_DATE</column_name>
+          <stream_name>BIRTH_DATE</stream_name>
+        </field>
+        <field>
+          <column_name>GENDER</column_name>
+          <stream_name>GENDER</stream_name>
+        </field>
+        <field>
+          <column_name>ETHNICITY</column_name>
+          <stream_name>ETHNICITY</stream_name>
+        </field>
+        <field>
+          <column_name>PREFIX</column_name>
+          <stream_name>PREFIX</stream_name>
+        </field>
+        <field>
+          <column_name>SUFFIX</column_name>
+          <stream_name>SUFFIX</stream_name>
+        </field>
+        <field>
+          <column_name>PRIMARY_IDENTITY</column_name>
+          <stream_name>PRIMARY_IDENTITY</stream_name>
+        </field>
+        <field>
+          <column_name>COMMENTS</column_name>
+          <stream_name>COMMENT</stream_name>
+        </field>
+        <field>
+          <column_name>ROOT_PERSON_ID</column_name>
+          <stream_name>ROOT_PERSON_ID</stream_name>
+        </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>525</xloc>
-      <yloc>78</yloc>
+      <xloc>672</xloc>
+      <yloc>79</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -312,39 +370,6 @@
       </field>
       <field>
         <name>GENDER</name>
-        <type>String</type>
-        <format>&#x23;</format>
-        <currency>&#x24;</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>15</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>PREFIX</name>
-        <type>Date</type>
-        <format>yyyy&#x2f;MM&#x2f;dd HH&#x3a;mm&#x3a;ss.SSS</format>
-        <currency>&#x24;</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>SUFFIX</name>
-        <type>Date</type>
-        <format>yyyy&#x2f;MM&#x2f;dd HH&#x3a;mm&#x3a;ss.SSS</format>
-        <currency>&#x24;</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>PRIMARY_IDENTITY</name>
         <type>Integer</type>
         <format>&#x23;</format>
         <currency>&#x24;</currency>
@@ -355,8 +380,19 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>COMMENT</name>
-        <type>Date</type>
+        <name>ETHNICITY</name>
+        <type>Integer</type>
+        <format>&#x23;</format>
+        <currency>&#x24;</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>15</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>PREFIX</name>
+        <type>Integer</type>
         <format>yyyy&#x2f;MM&#x2f;dd HH&#x3a;mm&#x3a;ss.SSS</format>
         <currency>&#x24;</currency>
         <decimal>.</decimal>
@@ -365,11 +401,101 @@
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
+      <field>
+        <name>SUFFIX</name>
+        <type>Integer</type>
+        <format>yyyy&#x2f;MM&#x2f;dd HH&#x3a;mm&#x3a;ss.SSS</format>
+        <currency>&#x24;</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>PRIMARY_IDENTITY</name>
+        <type>String</type>
+        <format/>
+        <currency>&#x24;</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>COMMENT</name>
+        <type>String</type>
+        <format/>
+        <currency>&#x24;</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>15</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>97</xloc>
+      <xloc>96</xloc>
       <yloc>80</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Value Mapper</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <field_to_use>PRIMARY_IDENTITY</field_to_use>
+    <target_field/>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>Y</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>N</source_value>
+        <target_value>0</target_value>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>351</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Set field value</name>
+    <type>SetValueField</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>ROOT_PERSON_ID</name>
+        <replaceby>PERSON_ID</replaceby>
+        </field>
+      </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>571</xloc>
+      <yloc>77</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
