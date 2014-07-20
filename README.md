@@ -1,6 +1,6 @@
 #Data Integartion
 
-##kettel.properties
+kettel.properties
 ```
 guard.conversion.transformation = /home/ibm/dev/guard-di
 guard.conversion.datafile = /home/ibm/dev/guard-di/data-files
